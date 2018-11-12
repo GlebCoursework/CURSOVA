@@ -28,6 +28,7 @@ namespace CURSOVA.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public virtual ICollection<Pizza> Pizzas { get; set; }
     }
 
     public class Pizza
@@ -37,7 +38,7 @@ namespace CURSOVA.Models
         public string Size { get; set; }
         public decimal Price { get; set; }
         public byte[] Image { get; set; }
-        public virtual List<Component> Components { get; set; }
+        public virtual ICollection<Component> Components { get; set; }
     }
 
     public class BoughtPizza

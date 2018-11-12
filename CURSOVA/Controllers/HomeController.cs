@@ -43,13 +43,16 @@ namespace CURSOVA.Controllers
 
         [Authorize]
         public ActionResult Pizzas()
-        {
-            var Pizza = applicationDbContext.Pizzas;
-            List<PizzaModel> PizzaModels = new List<PizzaModel>();
-            foreach (var item in Pizza)
+        {        
+            List<PizzaModel> PizzaModels = applicationDbContext.Pizzas.Select(x => new PizzaModel()
             {
-                PizzaModels.Add(ConvertPizzaToPizzaModel(item));
-            }
+                Id = x.Id,
+                Name = x.Name,
+                Price = x.Price,
+                Size = x.Size,
+                PizzasComponents = x.Components.Select(c => c.Name).ToList()
+            }).ToList();
+
             return View("Pizzas", PizzaModels);
         }
 
@@ -74,7 +77,6 @@ namespace CURSOVA.Controllers
                     boughtPizza.Count++;
                     boughtPizza.TotalPrice += boughtPizza.PizzaModel.Price;
                 }
-                // BoughtListPizza.Add(new BoughtPizza { Count = 1, Pizza = picceria.Pizzas.First(x => x.Id == item) });
             }
             Session["Pizzas"] = pizzaId;
             return BoughtPizzasModel;

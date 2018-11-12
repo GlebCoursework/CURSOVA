@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace CURSOVA
 {
-    internal class CustomInitializer : DropCreateDatabaseIfModelChanges<ApplicationDbContext>
+    internal class CustomInitializer : DropCreateDatabaseAlways<ApplicationDbContext>
     {
         protected override void Seed(ApplicationDbContext context)
         {
@@ -50,7 +50,7 @@ namespace CURSOVA
                 Name = "Proshuto",
                 Price = 100,
                 Size = "Large",
-                Components = new List<Component>() { meat, sauce, cheese }
+               Components = new List<Component>() { meat, sauce, cheese }
             };
             context.Pizzas.Add(pizza);
 
