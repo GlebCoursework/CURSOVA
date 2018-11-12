@@ -1,0 +1,13 @@
+﻿@model CURSOVA.Models.ViewModels.LoginModel
+@using (Html.BeginForm(new { id = "my-form" }))
+{
+    @Html.ValidationSummary()
+
+    <label>Login: </label>
+    @Html.TextBoxFor(x => x.Login)
+
+    <label>Password: </label>
+    @Html.PasswordFor(x => x.Password)
+
+    <input type="button" value="Submit" onclick="LoginModel(this)"/>
+}

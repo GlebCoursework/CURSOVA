@@ -1,0 +1,21 @@
+﻿@if (User.Identity.IsAuthenticated)
+{
+    @Html.ActionLink(User.Identity.Name, "PersonalCabinet", "Account")
+    @Html.ActionLink("LogOut", "LogOut", "Account")
+    @Html.ActionLink("Buy Pizza", "BuyPizza", "Account")
+
+    if (User.IsInRole("admin"))
+    {
+        @Html.RouteLink("Admin", new { controller = "Home", action = "Test", area = "Admin" })
+    }
+
+}
+else
+{
+    <li>
+        <button onclick="Login()">Sign in</button>
+    </li>
+    <li>
+        <button onclick="GetRegistration()">Registration</button>
+    </li>
+}

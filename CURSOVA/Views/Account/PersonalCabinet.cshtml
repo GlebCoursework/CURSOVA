@@ -1,0 +1,36 @@
+﻿@model CURSOVA.Models.ViewModels.UserModel
+
+
+<div class="row col-lg-12">
+    @{
+        ViewBag.Title = "PersonalCabinet";
+    }
+    <h2>PersonalCabinet</h2>
+</div>
+<br />
+<div class="row">
+    <div class="col-lg-8">
+
+        <p>Email:</p>
+        <p>@Model.Email</p>
+        <br />
+
+        <p>Login:</p>
+        <p>@Model.Login</p>
+        <br />
+
+        <p>Name:</p>
+        <p>@Model.Name</p>
+        <br />
+
+        <p>SurName:</p>
+        <p>@Model.Surname</p>
+        <br />
+
+    </div>
+    <div class="col-lg-4" id="Div-PersonalCabinet">
+        @Html.Action("ButtonsForChange")
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/Test")

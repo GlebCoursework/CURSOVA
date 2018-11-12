@@ -14,5 +14,11 @@ namespace CURSOVA.Controllers
 
             return View();
         }
+
+        public ActionResult CheckUser()
+        {
+
+            return PartialView("");
+        }
     }
 }

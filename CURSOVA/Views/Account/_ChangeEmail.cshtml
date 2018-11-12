@@ -1,0 +1,18 @@
+﻿@model CURSOVA.Models.ViewModels.ChangeEmailModel
+
+@using (Html.BeginForm(new { id = "changeemailform" }))
+{
+    <p>
+        <label>New email: </label>
+        @Html.TextBoxFor(x => x.NewEmail)
+        @Html.ValidationMessageFor(x => x.NewEmail)
+    </p>
+    <p>
+        <label>Password: </label>
+        @Html.PasswordFor(x => x.Password)
+        @Html.ValidationMessageFor(x => x.Password)
+    </p>
+    <p>
+        <input type="button" value="Submit" onclick="ChangeEmail(this)" />
+    </p>
+}
