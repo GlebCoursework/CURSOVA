@@ -1,0 +1,12 @@
+﻿
+@model CURSOVA.Models.ViewModels.PizzaModel
+<table>
+    @foreach (var item in Model.PizzasComponents)
+    {
+        <tr>
+            <td>
+                @item
+            </td>
+        </tr>
+    }
+</table>

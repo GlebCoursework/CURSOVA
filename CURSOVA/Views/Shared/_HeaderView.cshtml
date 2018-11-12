@@ -1,8 +1,11 @@
 ﻿@if (User.Identity.IsAuthenticated)
 {
     @Html.ActionLink(User.Identity.Name, "PersonalCabinet", "Account")
+    <br />
     @Html.ActionLink("LogOut", "LogOut", "Account")
-    @Html.ActionLink("Buy Pizza", "BuyPizza", "Account")
+    <br />
+    @Html.ActionLink("Buy Pizza", "Pizzas", "Home")
+    <br />
 
     if (User.IsInRole("admin"))
     {

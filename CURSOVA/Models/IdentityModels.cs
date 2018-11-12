@@ -24,14 +24,20 @@ namespace CURSOVA.Models
         public virtual List<BoughtList> BoughtLists { get; set; }
     }
 
+    public class Component
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+    }
+
     public class Pizza
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public string Size { get; set; }
         public decimal Price { get; set; }
-        public List<string> PizzasComponents { get; set; }
         public byte[] Image { get; set; }
+        public virtual List<Component> Components { get; set; }
     }
 
     public class BoughtPizza
@@ -66,5 +72,6 @@ namespace CURSOVA.Models
         public virtual DbSet<Pizza> Pizzas { get; set; }
         public virtual DbSet<BoughtList> BoughtList { get; set; }
         public virtual DbSet<BoughtPizza> BoughtPizza { get; set; }
+        public virtual DbSet<Component> Components { get; set; }
     }
 }

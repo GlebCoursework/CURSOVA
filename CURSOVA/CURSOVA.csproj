@@ -239,9 +239,11 @@
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ViewModels\BoughtPizzasModel.cs" />
     <Compile Include="Models\ViewModels\ChangeEmailModel.cs" />
     <Compile Include="Models\ViewModels\ChangePasswordModel.cs" />
     <Compile Include="Models\ViewModels\LoginModel.cs" />
+    <Compile Include="Models\ViewModels\PizzaModel.cs" />
     <Compile Include="Models\ViewModels\RegistrationModel.cs" />
     <Compile Include="Models\ViewModels\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -291,6 +293,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\Pizza.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\PersonalCabinet.js" />
@@ -316,6 +319,9 @@
     <Content Include="Views\Account\_ChangePassword.cshtml" />
     <Content Include="Views\Account\_ButtonsForChange.cshtml" />
     <Content Include="Views\Account\_ChangeEmail.cshtml" />
+    <Content Include="Views\Home\Pizzas.cshtml" />
+    <Content Include="Views\Home\_PizzasComponents.cshtml" />
+    <Content Include="Views\Home\_BoughtPizzas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

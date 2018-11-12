@@ -30,6 +30,10 @@ namespace CURSOVA
             bundles.Add(new ScriptBundle("~/bundles/Test").Include(
                         "~/Scripts/PersonalCabinet.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/pizza").Include(
+                      "~/Scripts/Pizza.js")
+                      );
+
         }
     }
 }
