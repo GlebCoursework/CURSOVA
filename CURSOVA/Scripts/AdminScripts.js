@@ -1,7 +1,6 @@
 ﻿function EditPizza(item) {
     $.ajax({
-
-        url: "Admin/Home/EditPizza",
+        url: "EditPizza",
         contentType: "application/json; charset=utf-8",
         data: { id: item },
         cache: false,

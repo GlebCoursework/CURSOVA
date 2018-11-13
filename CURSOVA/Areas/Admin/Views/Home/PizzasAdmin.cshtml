@@ -19,3 +19,21 @@
 
 @Scripts.Render("~/bundles/adminscripts")
 
+@*@section scripts{
+    <script>
+        function EditPizza(item) {
+            $.ajax({
+                url: @Url.Action("",""),
+                contentType: "application/json; charset=utf-8",
+                data: { id: item },
+                cache: false,
+                async: true,
+                success: function (result) {
+                    $("#Div-Edit").html(result);
+                }
+            });
+            return false;
+        }
+    </script>
+
+}*@
