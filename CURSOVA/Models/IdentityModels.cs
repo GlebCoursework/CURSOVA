@@ -22,6 +22,7 @@ namespace CURSOVA.Models
         public string Name { get; set; }
         public string Surname { get; set; }
         public virtual List<BoughtList> BoughtLists { get; set; }
+        public bool Bannes { get; set; }
     }
 
     public class Component
@@ -39,6 +40,7 @@ namespace CURSOVA.Models
         public decimal Price { get; set; }
         public byte[] Image { get; set; }
         public virtual ICollection<Component> Components { get; set; }
+        public bool Missing { get; set; }
     }
 
     public class BoughtPizza
