@@ -1,8 +1,11 @@
 ﻿using CURSOVA.Models;
 using CURSOVA.Models.ViewModels;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -10,6 +13,19 @@ namespace CURSOVA.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationUserManager UserManager
+        {
+            get => HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+        }
+
+        private IAuthenticationManager AuthenticationManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().Authentication;
+            }
+        }
+
         private ApplicationDbContext applicationDbContext = new ApplicationDbContext();
         public ActionResult Index()
         {
@@ -43,7 +59,7 @@ namespace CURSOVA.Controllers
 
         [Authorize]
         public ActionResult Pizzas()
-        {        
+        {
             List<PizzaModel> PizzaModels = applicationDbContext.Pizzas.Select(x => new PizzaModel()
             {
                 Id = x.Id,
@@ -111,6 +127,42 @@ namespace CURSOVA.Controllers
             BoughtPizzasModel = SetBuyPizza(pizzaId);
             return PartialView("_BoughtPizzas", BoughtPizzasModel);
 
+        }
+
+        public async Task<ActionResult> Accept(Models.ViewModels.UserInfo userInfo)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("UserInfo", userInfo);
+            }
+
+            ApplicationUser applicationUser = await UserManager.FindByNameAsync(User.Identity.Name);
+            // applicationUser.BoughtLists.Add
+            BoughtList bought = new BoughtList { Address = userInfo.Address, Phone = userInfo.Phone };
+            List<int> pizzaId = (Session["Pizzas"] as List<int>);
+            List<BoughtPizzasModel> BoughtPizzasModel = SetBuyPizza(pizzaId);
+            bought.BoughtPizzas = new List<BoughtPizza>();
+
+            foreach (var item in BoughtPizzasModel)
+            {
+                bought.BoughtPizzas.Add(new BoughtPizza
+                {
+                    Count = item.Count,
+                    TotalPrice = item.TotalPrice,
+                    Pizza = applicationDbContext.Pizzas.
+                            FirstOrDefault(x => x.Id == item.PizzaModel.Id)
+                });
+
+            }
+            applicationUser.BoughtLists.Add(bought);
+            await applicationDbContext.SaveChangesAsync();
+
+            return null;
+        }
+
+        public ActionResult UserInfo()
+        {
+            return View("UserInfo");
         }
     }
 }
