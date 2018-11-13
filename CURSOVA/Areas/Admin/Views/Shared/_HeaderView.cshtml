@@ -2,6 +2,6 @@
 @Html.RouteLink(User.Identity.Name, new { controller = "Account", action = "PersonalCabinet", area = "" }, new { @class = "btn btn-primary" })
 
 @Html.ActionLink("Users", "Users", "Home", new object(), new { @class = "btn btn-primary" })
-@Html.ActionLink("Pizzas", "Pizzas", "Home", new object(), new { @class = "btn btn-primary" })
+@Html.ActionLink("Pizzas", "PizzasAdmin", "Home", new object(), new { @class = "btn btn-primary" })
 
 @Html.RouteLink("Back", new { controller = "Home", action = "Index", area = "" }, new { @class = "btn btn-primary" })
