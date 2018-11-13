@@ -21,7 +21,7 @@ namespace CURSOVA
             roleManager.Create(roleadmin);
             roleManager.Create(roleuser);
 
-            var admin = new ApplicationUser { Email = "glebich195@gmail.com", UserName = "glebich195", BoughtLists = new List<BoughtList>(), Name = "Gleb", Surname = "test" };
+            var admin = new ApplicationUser { Email = "glebich195@gmail.com", UserName = "glebich195", BoughtLists = new List<BoughtList>(), Name = "Gleb", Surname = "test",Bannes=false };
             string password = "Qwerty111";
             var result = userManager.Create(admin, password);
             if (result.Succeeded)
@@ -30,7 +30,7 @@ namespace CURSOVA
                 userManager.AddToRole(admin.Id, roleuser.Name);
             }
 
-            var simpleuser = new ApplicationUser { Email = "qwerty@mail.ru", UserName = "simpleuser", BoughtLists = new List<BoughtList>(), Name = "Test", Surname = "Test2" };
+            var simpleuser = new ApplicationUser { Email = "qwerty@mail.ru", UserName = "simpleuser", BoughtLists = new List<BoughtList>(), Name = "Test", Surname = "Test2",Bannes=false };
             password = "Qwerty222";
             result = userManager.Create(simpleuser, password);
             if (result.Succeeded)
@@ -50,7 +50,8 @@ namespace CURSOVA
                 Name = "Proshuto",
                 Price = 100,
                 Size = "Large",
-               Components = new List<Component>() { meat, sauce, cheese }
+                Components = new List<Component>() { meat, sauce, cheese },
+                Missing = false
             };
             context.Pizzas.Add(pizza);
 
@@ -59,7 +60,8 @@ namespace CURSOVA
                 Name = "Polo",
                 Price = 100,
                 Size = "Large",
-                Components = new List<Component>() { meat, tomatos, mushrooms }
+                Components = new List<Component>() { meat, tomatos, mushrooms },
+                Missing = false
             };
             context.Pizzas.Add(pizza);
 
@@ -68,7 +70,8 @@ namespace CURSOVA
                 Name = "QuatroFormadgi",
                 Price = 100,
                 Size = "Large",
-                Components = new List<Component>() { meat, olives, sauce }
+                Components = new List<Component>() { meat, olives, sauce },
+                Missing = false
             };
             context.Pizzas.Add(pizza);
 

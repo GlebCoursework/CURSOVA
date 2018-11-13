@@ -17,7 +17,8 @@ namespace CURSOVA.Areas.Admin
             context.MapRoute(
                 "Admin_default",
                  "Admin/{controller}/{action}/{id}",
-                new {action = "Index", id = UrlParameter.Optional }
+               defaults: new {action = "Index", id = UrlParameter.Optional },
+               namespaces: new[] { "CURSOVA.Controllers" }
             );
         }
     }

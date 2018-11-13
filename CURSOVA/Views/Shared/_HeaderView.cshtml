@@ -8,7 +8,7 @@
 
     if (User.IsInRole("admin"))
     {
-        @Html.RouteLink("Admin", new { controller = "Home", action = "Test", area = "Admin" }, new { @class = "btn btn-primary" })
+        @Html.RouteLink("Admin", new { controller = "Home", action = "Index", area = "Admin" }, new { @class = "btn btn-primary" })
     }
 
 }

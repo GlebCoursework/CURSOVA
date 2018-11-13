@@ -41,16 +41,23 @@ namespace CURSOVA.Controllers
             if (ModelState.IsValid)
             {
                 ApplicationUser user = await UserManager.FindAsync(loginModel.Login, loginModel.Password);
-                if (user == null)
+                if (user.Bannes)
                 {
-                    ModelState.AddModelError("", "Login or password are not valid");
+                    ModelState.AddModelError("", "This User Is Banned");
                 }
                 else
                 {
-                    ClaimsIdentity claim = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
-                    AuthenticationManager.SignOut();
-                    AuthenticationManager.SignIn(new AuthenticationProperties { IsPersistent = true }, claim);
-                    return null;
+                    if (user == null)
+                    {
+                        ModelState.AddModelError("", "Login or password are not valid");
+                    }
+                    else
+                    {
+                        ClaimsIdentity claim = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
+                        AuthenticationManager.SignOut();
+                        AuthenticationManager.SignIn(new AuthenticationProperties { IsPersistent = true }, claim);
+                        return null;
+                    }
                 }
             }
             return PartialView("_LogIn", loginModel);
@@ -79,7 +86,8 @@ namespace CURSOVA.Controllers
                     UserName = model.UserName,
                     Name = model.Name,
                     Surname = model.SurName,
-                    BoughtLists = new List<BoughtList>()
+                    BoughtLists = new List<BoughtList>(),
+                    Bannes=false
                 };
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
