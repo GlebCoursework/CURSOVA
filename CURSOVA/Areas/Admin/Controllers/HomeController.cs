@@ -10,9 +10,10 @@ namespace CURSOVA.Areas.Admin.Controllers
     public class HomeController : Controller
     {
         // GET: Admin/Home
-        public ActionResult Test()
+        public ActionResult Index()
         {
-            return View("Test");
+            return View("Index");
         }
+
     }
 }
