@@ -34,7 +34,7 @@ namespace CURSOVA.Controllers
             return PartialView("_LogIn");
         }
 
-        [HttpGet]
+        [HttpPost]
         //[ValidateAntiForgeryToken]
         public async Task<ActionResult> LogInPost(LoginModel loginModel)
         {

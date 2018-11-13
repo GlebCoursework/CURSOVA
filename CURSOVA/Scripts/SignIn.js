@@ -2,7 +2,7 @@
 {
     var $form = $(btnClicked).parents('form');
     $.ajax({
-        //type: "POST",
+        type: "POST",
         url: "/Account/LogInPost",
         data: $form.serialize(),
         cache: false,
