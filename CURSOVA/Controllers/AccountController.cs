@@ -38,26 +38,25 @@ namespace CURSOVA.Controllers
         //[ValidateAntiForgeryToken]
         public async Task<ActionResult> LogInPost(LoginModel loginModel)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && loginModel.Login!=null)
             {
-                ApplicationUser user = await UserManager.FindAsync(loginModel.Login, loginModel.Password);
-                if (user.Bannes)
+                ApplicationUser user = null;
+                user = await UserManager.FindAsync(loginModel.Login, loginModel.Password);
+
+                if (user == null)
+                {
+                    ModelState.AddModelError("", "Login or password are not valid");
+                }
+                else if (user.Bannes)
                 {
                     ModelState.AddModelError("", "This User Is Banned");
                 }
                 else
                 {
-                    if (user == null)
-                    {
-                        ModelState.AddModelError("", "Login or password are not valid");
-                    }
-                    else
-                    {
-                        ClaimsIdentity claim = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
-                        AuthenticationManager.SignOut();
-                        AuthenticationManager.SignIn(new AuthenticationProperties { IsPersistent = true }, claim);
-                        return null;
-                    }
+                    ClaimsIdentity claim = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
+                    AuthenticationManager.SignOut();
+                    AuthenticationManager.SignIn(new AuthenticationProperties { IsPersistent = true }, claim);
+                    return null;
                 }
             }
             return PartialView("_LogIn", loginModel);
@@ -87,7 +86,7 @@ namespace CURSOVA.Controllers
                     Name = model.Name,
                     Surname = model.SurName,
                     BoughtLists = new List<BoughtList>(),
-                    Bannes=false
+                    Bannes = false
                 };
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -109,7 +108,10 @@ namespace CURSOVA.Controllers
             ApplicationUser user = UserManager.FindByName(User.Identity.Name);
             UserModel userModel = new UserModel()
             {
-                Email = user.Email, Login = user.UserName, Name = user.Name, Surname = user.Surname
+                Email = user.Email,
+                Login = user.UserName,
+                Name = user.Name,
+                Surname = user.Surname
             };
             return View(userModel);
         }

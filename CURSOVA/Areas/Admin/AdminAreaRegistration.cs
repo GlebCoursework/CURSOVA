@@ -18,7 +18,7 @@ namespace CURSOVA.Areas.Admin
                 "Admin_default",
                  "Admin/{controller}/{action}/{id}",
                defaults: new {action = "Index", id = UrlParameter.Optional },
-               namespaces: new[] { "CURSOVA.Controllers" }
+               namespaces: new[] { "CURSOVA.Areas.Admin.Controllers" }
             );
         }
     }

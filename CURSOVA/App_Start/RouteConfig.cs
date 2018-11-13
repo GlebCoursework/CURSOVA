@@ -17,7 +17,7 @@ namespace CURSOVA
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                namespaces: new[] { "CURSOVA.Areas.Admin.Controllers" }
+                namespaces: new[] { "CURSOVA.Controllers" }
             );
         }
     }

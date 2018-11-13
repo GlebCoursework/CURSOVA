@@ -201,6 +201,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Models\PizzaModelAdmin.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
     <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
     <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
@@ -289,10 +290,11 @@
     <Content Include="Areas\Admin\Views\Shared\_HeaderView.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Users.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\Pizzas.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\PizzasAdmin.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Modal.cshtml" />
     <Content Include="Areas\Admin\Views\Home\_EditPizzas.cshtml" />
     <Content Include="Areas\Admin\Views\Home\_EditComponents.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\_PizzasComponentsAdmin.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -335,7 +337,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

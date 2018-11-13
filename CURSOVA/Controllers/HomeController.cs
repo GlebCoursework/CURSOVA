@@ -59,9 +59,10 @@ namespace CURSOVA.Controllers
 
         [Authorize]
         public ActionResult Pizzas()
-        {        
-            List<PizzaModel> PizzaModels = applicationDbContext.Pizzas.Where(p=>p.Missing==false).
-                                                                        Select(x => new PizzaModel()
+        {
+
+            List<Pizza> pizzas = applicationDbContext.Pizzas.Where(p => p.Missing == false).ToList();
+            List<PizzaModel> PizzaModels = pizzas.Select(x => new PizzaModel()
             {
                 Id = x.Id,
                 Name = x.Name,
