@@ -15,5 +15,10 @@ namespace CURSOVA.Areas.Admin.Controllers
             return View("Index");
         }
 
+        public ActionResult Pizzas()
+        {
+            return View();
+        }
+
     }
 }
