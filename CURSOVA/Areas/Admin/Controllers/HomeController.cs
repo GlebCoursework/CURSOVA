@@ -18,10 +18,12 @@ namespace CURSOVA.Areas.Admin.Controllers
     {
         private ApplicationUserManager UserManager
         {
-            return View("Test");
+            get => HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
         }
 
+
         private ApplicationDbContext applicationDbContext = new ApplicationDbContext();
+
         public ActionResult Index()
         {
             return View("Index");
@@ -86,10 +88,14 @@ namespace CURSOVA.Areas.Admin.Controllers
                                                             Login=x.UserName                                                          
                                                         }).ToList();
 
-            //foreach(var item in UsersModel)
-            //{
-            //    item.Roles = roles.Select(x=>x.Users.Where(u=>u.UserId == item.Id))
-            //}
+            foreach(var item in UsersModel)
+            {
+                foreach(var role in roles)
+                {
+                    
+                }
+                //item.Roles = roles.Select(x=>x.Users.Where(u=>u.UserId == item.Id))
+            }
             return View(UsersModel);
         }
 
@@ -97,7 +103,9 @@ namespace CURSOVA.Areas.Admin.Controllers
         public ActionResult EditPizzaComponents(int? id)
         {
             CurrentPizzaComponentsModel currentPizzaComponentsModel = new CurrentPizzaComponentsModel();
-            currentPizzaComponentsModel.CurrentList = applicationDbContext.Pizzas.FirstOrDefault(x => x.Id == id).Components.Select(c => new PizzaComponentsModel
+            currentPizzaComponentsModel.CurrentList =
+            applicationDbContext.Pizzas.FirstOrDefault(x => x.Id == id).
+            Components.Select(c => new PizzaComponentsModel
             {
                 Id = c.Id,
                 Name = c.Name
