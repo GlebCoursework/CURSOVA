@@ -1,8 +1,4 @@
-﻿using CURSOVA.Areas.Admin.Models;
-using CURSOVA.Models;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,17 +9,10 @@ namespace CURSOVA.Areas.Admin.Controllers
     [Authorize(Roles = "admin")]
     public class HomeController : Controller
     {
-        private ApplicationUserManager UserManager
+        // GET: Admin/Home
+        public ActionResult Test()
         {
-            get => HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-        }
-
-        private IAuthenticationManager AuthenticationManager
-        {
-            get
-            {
-                return HttpContext.GetOwinContext().Authentication;
-            }
+            return View("Test");
         }
 
         private ApplicationDbContext applicationDbContext = new ApplicationDbContext();
