@@ -27,6 +27,10 @@ namespace CURSOVA.Controllers
                 return HttpContext.GetOwinContext().Authentication;
             }
         }
+        public void test()
+        {
+            
+        }
 
         [HttpGet]
         public ActionResult LogIn()
@@ -91,6 +95,8 @@ namespace CURSOVA.Controllers
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+
+                    UserManager.AddToRole(user.Id, "user");
                     return null;
                 }
             }
