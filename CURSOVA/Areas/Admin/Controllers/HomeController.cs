@@ -1,10 +1,13 @@
 ﻿using CURSOVA.Areas.Admin.Models;
 using CURSOVA.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
 
@@ -73,6 +76,29 @@ namespace CURSOVA.Areas.Admin.Controllers
                 return null;
             }
             return PartialView("_EditPizza", pizzamodel);
+        }
+
+        public ActionResult Users()
+        {
+            var roleStore = new RoleStore<IdentityRole>(applicationDbContext);
+            var roleMngr = new RoleManager<IdentityRole>(roleStore);
+            var roles = roleMngr.Roles.ToList();
+            
+            List<UserModel> UsersModel= UserManager.Users.Select(x => new UserModel
+                                                        {
+                                                            Id=x.Id,
+                                                            Bannes=x.Bannes,
+                                                            Email=x.Email,
+                                                            SurName=x.Surname,
+                                                            Name=x.Name,
+                                                            Login=x.UserName                                                          
+                                                        }).ToList();
+
+            //foreach(var item in UsersModel)
+            //{
+            //    item.Roles = roles.Select(x=>x.Users.Where(u=>u.UserId == item.Id))
+            //}
+            return View(UsersModel);
         }
 
     }
