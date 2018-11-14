@@ -25,9 +25,9 @@
         @Html.ValidationMessageFor(x => x.Missing)
     </p>
     <p>
-        <label>New email: </label>
-        @Html.EditorFor(x => x.Name)
-        @Html.ValidationMessageFor(x => x.Name)
+        <div id="div-components">
+            @Html.Action("EditPizzaComponents", new { id = Model.Id })
+        </div>
     </p>
     <p>
         <input type="button" value="Submit" onclick="ChangeEmail(this)" />

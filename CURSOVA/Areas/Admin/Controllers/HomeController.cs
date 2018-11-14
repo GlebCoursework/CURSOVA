@@ -74,10 +74,7 @@ namespace CURSOVA.Areas.Admin.Controllers
 
         public ActionResult Users()
         {
-            var roleStore = new RoleStore<IdentityRole>(applicationDbContext);
-            var roleMngr = new RoleManager<IdentityRole>(roleStore);
-            var roles = roleMngr.Roles.ToList();
-            
+            List<string> temp = new List<string>();
             List<UserModel> UsersModel= UserManager.Users.Select(x => new UserModel
                                                         {
                                                             Id=x.Id,
@@ -85,16 +82,21 @@ namespace CURSOVA.Areas.Admin.Controllers
                                                             Email=x.Email,
                                                             SurName=x.Surname,
                                                             Name=x.Name,
-                                                            Login=x.UserName                                                          
-                                                        }).ToList();
+                                                            Login=x.UserName   
+                                                            ,Roles = temp
+            }).ToList();
 
-            foreach(var item in UsersModel)
+            foreach (var item in UsersModel)
             {
-                foreach(var role in roles)
+                item.Roles = new List<string>();
+                ApplicationUser au = applicationDbContext.Users.First(u => u.UserName == item.Login);
+
+                foreach (IdentityUserRole role in au.Roles)
                 {
-                    
+
+                    string name = role.RoleId;
+                    item.Roles.AddRange(applicationDbContext.Roles.Where(r => r.Id == role.RoleId).Select(r=>r.Name).ToList());
                 }
-                //item.Roles = roles.Select(x=>x.Users.Where(u=>u.UserId == item.Id))
             }
             return View(UsersModel);
         }
