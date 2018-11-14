@@ -27,10 +27,6 @@ namespace CURSOVA.Controllers
                 return HttpContext.GetOwinContext().Authentication;
             }
         }
-        public void test()
-        {
-            
-        }
 
         [HttpGet]
         public ActionResult LogIn()

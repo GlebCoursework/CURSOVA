@@ -112,7 +112,7 @@ namespace CURSOVA.Controllers
             }
             if (Id > 0)
             {
-                pizzaId.Add(Id);
+                pizzaId.Add(Id);    
             }
             BoughtPizzasModel = SetBuyPizza(pizzaId);
             return PartialView("_BoughtPizzas", BoughtPizzasModel);
@@ -130,7 +130,7 @@ namespace CURSOVA.Controllers
             return PartialView("_BoughtPizzas", BoughtPizzasModel);
 
         }
-
+        [Authorize]
         public async Task<ActionResult> Accept(Models.ViewModels.UserInfo userInfo)
         {
             if (!ModelState.IsValid)
@@ -161,10 +161,16 @@ namespace CURSOVA.Controllers
 
             return null;
         }
-
+        [Authorize]
         public ActionResult UserInfo()
         {
             return View("UserInfo");
+        }
+
+        [Authorize]
+        public ActionResult Back()
+        {
+            return RedirectToAction("Pizzas");
         }
     }
 }

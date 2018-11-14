@@ -45,3 +45,12 @@
         </tr>
     }
 </table>
+@{
+    decimal a = 0;
+    foreach(var item in Model)
+    {
+        a += item.TotalPrice;
+    }
+<h2>Total Price: @a </h2>
+
+    }

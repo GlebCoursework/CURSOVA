@@ -1,0 +1,25 @@
+﻿
+@model CURSOVA.Models.ViewModels.UserInfo
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.Action("Buy")
+
+
+@using (Html.BeginForm("Accept", "Home"))
+{
+    <label>Phone: </label><br />
+    @Html.TextBoxFor(x => x.Phone)
+    @Html.ValidationMessageFor(x => x.Phone)
+    <br />
+
+    <label>Address: </label><br />
+    @Html.TextBoxFor(x => x.Address)
+    @Html.ValidationMessageFor(x => x.Address)
+    <br />
+    <input type="submit" value="Accept" class="btn btn-primary" />
+}
+
+@Html.ActionLink("Back", "Back", "Home", new object(), new { @class = "btn btn-primary" })
+
