@@ -75,5 +75,21 @@ namespace CURSOVA.Areas.Admin.Controllers
             return PartialView("_EditPizza", pizzamodel);
         }
 
+
+        public ActionResult EditPizzaComponents(int? id)
+        {
+            CurrentPizzaComponentsModel currentPizzaComponentsModel = new CurrentPizzaComponentsModel();
+            currentPizzaComponentsModel.CurrentList = applicationDbContext.Pizzas.FirstOrDefault(x => x.Id == id).Components.Select(c => new PizzaComponentsModel
+            {
+                Id = c.Id,
+                Name = c.Name
+            }).ToList();
+
+            currentPizzaComponentsModel.TotalList = applicationDbContext.Components.Select(c => new PizzaComponentsModel {
+                Id = c.Id,
+                Name = c.Name
+            }).ToList();
+            return PartialView("_EditPizzaComponents", currentPizzaComponentsModel);
+        }
     }
 }

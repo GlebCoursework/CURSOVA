@@ -1,0 +1,58 @@
+﻿@model CURSOVA.Areas.Admin.Models.CurrentPizzaComponentsModel
+
+<div class="row">
+    <div>
+        <h1>Current:</h1>
+        <table>
+            <tr>
+                <th>
+                    Name:
+                </th>
+
+                <th>
+                    Action
+                </th>
+            </tr>
+
+            @foreach (var item in Model.CurrentList)
+            {
+                <tr>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        <input type="button" value="Del" onclick="DelComponents(@item.Id)" />
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+
+
+    <div>
+        <h1>All:</h1>
+        <table>            
+            <tr>
+                <th>
+                    Name:
+                </th>
+
+                <th>
+                    Action
+                </th>
+            </tr>
+
+            @foreach (var item in Model.TotalList)
+            {
+                <tr>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        <input type="button" value="Add" onclick="AddComponents(@item.Id)" />
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

@@ -201,6 +201,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Models\PizzaComponentsModel.cs" />
     <Compile Include="Areas\Admin\Models\PizzaModelAdmin.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
     <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
@@ -294,6 +295,7 @@
     <Content Include="Areas\Admin\Views\Home\_EditPizzas.cshtml" />
     <Content Include="Areas\Admin\Views\Home\_PizzasComponentsAdmin.cshtml" />
     <Content Include="Areas\Admin\Views\Home\_EditPizza.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\_EditPizzaComponents.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
