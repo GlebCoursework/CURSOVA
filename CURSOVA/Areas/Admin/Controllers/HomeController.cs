@@ -83,8 +83,7 @@ namespace CURSOVA.Areas.Admin.Controllers
                                                             SurName=x.Surname,
                                                             Name=x.Name,
                                                             Login=x.UserName   
-                                                            ,Roles = temp
-            }).ToList();
+                                                         }).ToList();
 
             foreach (var item in UsersModel)
             {
