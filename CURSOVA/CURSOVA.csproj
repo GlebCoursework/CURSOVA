@@ -298,7 +298,7 @@
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Home\PizzasAdmin.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_HeaderView.cshtml" />
-    <Content Include="Areas\Admin\Views\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
