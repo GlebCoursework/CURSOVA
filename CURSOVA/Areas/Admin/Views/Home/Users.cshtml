@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<CURSOVA.Areas.Admin.Models.UserModel>
 @{
     ViewBag.Title = "Users";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -6,3 +6,63 @@
 
 <h2>Users</h2>
 
+<table class="table table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Login)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SurName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bannes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Roles)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Login)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bannes)
+            </td>
+            <td>
+                @Html.Partial("_UserRoles", item)
+            </td>
+
+            <td>
+                <button type="button" class="btn btn-primary" onclick="">
+                    Banned
+                </button>
+                <button type="button" class="btn btn-primary" onclick="">
+                    Unblock
+                </button>
+                <button type="button" class="btn btn-primary" onclick="">
+                    Up to Admin
+                </button>
+            </td>
+        </tr>
+    }
+
+</table>

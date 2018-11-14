@@ -1,0 +1,12 @@
+﻿@model CURSOVA.Areas.Admin.Models.UserModel
+
+<table>
+    @foreach(var item in Model.Roles)
+    {
+        <tr>
+            <td>
+                @item
+            </td>
+        </tr>
+    }
+</table>
